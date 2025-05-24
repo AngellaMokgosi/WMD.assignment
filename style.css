@@ -25,8 +25,9 @@ body {
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   height:50%:/* Full viewport height */
-}  
-
+  margin: 30px 0; /* Adds space above and below logo */
+  padding: 20px 0; /* Extra padding if needed */
+}
   .flex-container{
     display: flex;
     flex-direction: row;
@@ -92,6 +93,10 @@ nav ul li {
     object-fit: cover;
     height: 200px;
   }
+
+.slider-container {
+    margin-top: 20px;
+}
   
   .images img:first-child {
     display: block;
