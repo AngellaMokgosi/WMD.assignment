@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Decor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="luxury-nav">
+    <ul>       
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="individual-product.html">Individual Product</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="#" onclick="viewCart()">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+  
+  <div class="logo-container">
+    <img src="images/collections/logo-removebg-preview.png" alt="Luxurylogo" class="logo">
+</div>
+  <div class="carousel-container">
+    <div class="slider">
+      <div class="images">
+        <img src="images/collections/Carousel_images/2.jpg" alt="Image 2">
+        <img src="images/collections/Carousel_images/3.jpg" alt="Image 3">
+        <img src="images/collections/Carousel_images/4.jpg" alt="Image 4">
+        <img src="images/collections/Carousel_images/5.jpg" alt="Image 5">
+        
+      </div>
+      <div class="dots">
+        <button class="active"></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+  </div>
+        <div class="center-container">
+          <h2>Explore Our Collections</h2>
+      </div>
+
+        <div class="product-grid">
+          <a href="shop.html?item=armchairs" class="product">
+            <img src="images/collections/armchair.jpg" alt="Armchairs">
+            <p>Armchairs</p>
+            
+          </a>
+          <a href="shop.html?item=coffee-tables" class="product">
+            <img src="images/collections/coffee-table.jpg" alt="Coffee Tables">
+            <p>Coffee Tables</p>
+            
+          </a>
+          <a href="shop.html?item=sofa-set" class="product">
+            <img src="images/collections/sofa-set.jpg" alt="Sofa Set">
+            <p>Sofa Set</p>
+            
+          </a>
+          <a href="shop.html?item=tv-stand" class="product">
+            <img src="images/collections/tv-set.jpg" alt="TV Stand">
+            <p>TV Stand</p>
+            
+          </a>
+          <a href="shop.html?item=side-board" class="product">
+            <img src="images/collections/side-board.jpg" alt="Side Board">
+            <p>Side Board</p>
+            
+          </a>
+          <a href="shop.html?item=chandelier" class="product">
+            <img src="images/collections/chandelier.jpg" alt="Chandelier">
+            <p>Chandelier</p>
+            
+          </a>
+          <a href="shop.html?item=rugs" class="product">
+            <img src="images/collections/rugs.jpg" alt="Rugs">
+            <p>Rugs</p>
+            
+          </a>
+          <a href="shop.html?item=floating-shelve" class="product">
+            <img src="images/collections/floating-shelf.jpg" alt="Floating-shelves">
+            <p>Floating shelves</p>
+            
+          </a>
+        </div>
+      </div>
+      <script>
+        const images = document.querySelectorAll('.slider .images img');
+        const dots = document.querySelectorAll('.slider .dots button');
+        let currentIndex = 0;
+
+        function showImage(index) {
+          images.forEach((img, i) => {
+            img.style.display = i === index ? 'block' : 'none';
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+          });
+          currentIndex = index;
+        }
+        function nextImage() {
+          let nextIndex = (currentIndex + 1) % images.length;
+          showImage(nextIndex);
+        }
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => showImage(index));
+    });
+    setInterval(nextImage, 5000);
+    showImage(0);
+  </script>
+  <script>
+    let cart = [];
+
+    function addToCart(product) {
+      cart.push(product);
+      document.getElementById("cart-count").textContent = cart.length;
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function viewCart() {
+      let cartModal = document.getElementById("cart-modal");
+      let cartItemsList = document.getElementById("cart-items");
+      cartItemsList.innerHTML = "";
+      
+      cart.forEach(item => {
+        let listItem = document.createElement("li");
+        listItem.textContent = item;
+        cartItemsList.appendChild(listItem);
+      });
+
+      cartModal.style.display = "block";
+    }
+
+    function closeCart() {
+      document.getElementById("cart-modal").style.display = "none";
+    }
+  </script>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="shop.html">Shop</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><img src="images/icons/facebook.svg" alt="Facebook"></a>
+        <a href="https://instagram.com" target="_blank"><img src="images/icons/instagram.svg" alt="Instagram"></a>
+        <a href="https://twitter.com" target="_blank"><img src="images/icons/twitter.svg" alt="Twitter"></a>
+      </div>
+      <p>&copy; 2025 The Luxury Lounge. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>

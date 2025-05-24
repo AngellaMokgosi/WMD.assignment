@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <link rel="stylesheet" href="style.css"> <!-- External CSS linked here -->
+</head>
+<body>
+  <body>
+
+    <nav class="luxury-nav">
+      <ul>       
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="individual-product.html">Individual Product</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="#" onclick="viewCart()">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  <header class="site-header">
+    <h1>Our Shop</h1>
+  </header>
+  <main>
+    <div class="collection-images">
+      <!-- Images will be dynamically added here -->
+    </div>
+  </main>
+  <script>
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const collection = urlParams.get('item');
+
+    const collectionImages = {
+  armchairs: [
+    { src: 'images/collections/armchair1.jpg',  name: 'Classic Comfort Armchair', price: 'P4,076' },
+    { src: 'images/collections/armchair2.jpg',  name: 'Classic Comfort Armchair', price: 'P4,762' },
+    { src: 'images/collections/armchair3.jpg',  name: 'Classic Comfort Armchair', price: 'P5,443' },
+    { src: 'images/collections/armchair4.jpg',  name: 'Classic Comfort Armchair', price: 'P6,138' },
+  ],
+  chandelier: [
+    { src: 'images/collections/chandelier1.jpg', price: 'P8,176' },
+    { src: 'images/collections/chandelier2.jpg', price: 'P9,534' },
+    { src: 'images/collections/chandelier3.jpg', price: 'P10,217' },
+    { src: 'images/collections/chandelier4.jpg', price: 'P10,899' },
+    { src: 'images/collections/chandelier5.jpg', price: 'P12,271' },
+  ],
+  'coffee-tables': [
+    { src: 'images/collections/coffee-table1.jpg', price: 'P2,715' },
+    { src: 'images/collections/coffee-table2.jpg', price: 'P3,398' },
+    { src: 'images/collections/coffee-table3.jpg', price: 'P4,076' },
+    { src: 'images/collections/coffee-table4.jpg', price: 'P4,774' },
+  ],
+  rugs: [
+    { src: 'images/collections/rug1.jpg', price: 'P1,350' },
+    { src: 'images/collections/rug2.jpg', price: 'P1,759' },
+    { src: 'images/collections/rug3.jpg', price: 'P2,168' },
+    { src: 'images/collections/rug4.jpg', price: 'P2,715' },
+    { src: 'images/collections/rug5.jpg', price: 'P3,398' },
+  ],
+  'sofa-set': [
+    { src: 'images/collections/sofa1.jpg', price: 'P10,899' },
+    { src: 'images/collections/sofa2.jpg', price: 'P12,271' },
+    { src: 'images/collections/sofa3.jpg', price: 'P13,643' },
+    { src: 'images/collections/sofa4.jpg', price: 'P16,368' },
+  ],
+  'tv-stand': [
+    { src: 'images/collections/tv-stand1.jpg', price: 'P4,076' },
+    { src: 'images/collections/tv-stand2.jpg', price: 'P4,774' },
+  ],
+  'side-board': [
+    { src: 'images/collections/side-board1.jpg', price: 'P6,810' },
+    { src: 'images/collections/side-board2.jpg', price: 'P8,176' },
+    { src: 'images/collections/side-board3.jpg', price: 'P9,534' },
+    { src: 'images/collections/side-board4.jpg', price: 'P10,217' },
+    { src: 'images/collections/side-board5.jpg', price: 'P10,899' },
+  ],
+  'floating-shelve': [
+    { src: 'images/collections/floating-shelf2.jpg', price: 'P2,690' },
+    { src: 'images/collections/floating-shelf3.jpg', price: 'P6,000' },
+    { src: 'images/collections/floating-shelf4.jpg', price: 'P1,690' },
+    { src: 'images/collections/floating-shelf5.jpg', price: 'P3,099' },
+    { src: 'images/collections/floating-shelf6.jpg', price: 'P5,110' },
+  ],
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const imageContainer = document.querySelector(".collection-images");
+
+    Object.keys(collectionImages).forEach((collection) => {
+        const section = document.createElement("div");
+        section.classList.add("product-category");
+
+        const collectionHeader = document.createElement("h2");
+        collectionHeader.textContent = collection.replace("-", " ").toUpperCase();
+        section.appendChild(collectionHeader);
+
+        collectionImages[collection].forEach((item) => {
+            const itemContainer = document.createElement("div");
+            itemContainer.classList.add("product-item");
+
+            const imgElement = document.createElement("img");
+            imgElement.src = item.src;
+            imgElement.alt = collection;
+            imgElement.style.width = "200px";
+            imgElement.style.display = "block";
+            imgElement.style.margin = "10px auto";
+
+            const priceElement = document.createElement("p");
+            priceElement.textContent = `Price: ${item.price}`;
+            priceElement.style.textAlign = "center";
+            priceElement.style.fontWeight = "bold";
+
+            itemContainer.appendChild(imgElement);
+            itemContainer.appendChild(priceElement);
+            section.appendChild(itemContainer);
+        });
+
+        imageContainer.appendChild(section);
+    });
+});
+
+
+</script>
+ </body>
+</html>

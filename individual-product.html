@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - The Luxury Lounge</title>
+    <link rel="stylesheet" href="style.css">
+    <body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            text-align: center;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-detail img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            margin: 10px;
+        }
+
+        .reviews p {
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body class="product-page">
+    
+    <nav class="luxury-nav">
+        <ul>       
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="individual-product.html">Individual Product</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#" onclick="viewCart()">Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+
+    <div class="content">
+        <section class="product-detail">
+            <img src="images/products/product1.jpg" alt="Luxury Armchair">
+            <h2>Luxury Armchair</h2>
+            <p>Elegant and comfortable armchair crafted for modern interiors.</p>
+            <p><strong>Price:</strong> $299</p>
+            <button onclick="addToCart('Luxury Armchair')">Add to Cart</button>
+        </section>
+        
+        <section class="related-products">
+            <h3>You may also like</h3>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="images/products/coffee-table.jpg" alt="Coffee Table">
+                    <p>Modern Coffee Table</p>
+                    <button onclick="addToCart('Coffee Table')">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="images/products/sofa-set.jpg" alt="Sofa Set">
+                    <p>Luxury Sofa Set</p>
+                    <button onclick="addToCart('Sofa Set')">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews">
+            <h3>Customer Reviews</h3>
+            <p>⭐⭐⭐⭐⭐ - "Absolutely love this armchair!"</p>
+            <p>⭐⭐⭐⭐ - "Great design but wished for more color options."</p>
+        </section>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function addToCart(product) {
+            cart.push(product);
+            document.getElementById("cart-count").textContent = cart.length;
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function viewCart() {
+            alert("Items in cart: " + (cart.length ? cart.join(", ") : "Your cart is empty."));
+        }
+    </script>
+</body>
+</html>
