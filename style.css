@@ -24,7 +24,7 @@ body {
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
-  height:100%:/* Full viewport height */
+  height:50%:/* Full viewport height */
 }  
 
   .flex-container{
