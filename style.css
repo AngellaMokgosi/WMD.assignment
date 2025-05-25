@@ -58,6 +58,11 @@ nav {
   align-items: center;
   width: 100%;
 }
+.navbar {
+  background-color: black;
+  padding: 15px; /* Adds space inside the navbar */
+}
+
 nav ul {
   display: flex;
   justify-content: center;
